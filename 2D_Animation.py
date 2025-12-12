@@ -12,19 +12,14 @@ rain_speed = 0.015
 rain_drops = []
 POINT_SIZE = 3.0
 
-
-# ---------------------------------
 # Initialize rain particles
-# ---------------------------------
+
 def init_rain_drops(num_drops=200):
     global rain_drops
     rain_drops = [(np.random.uniform(-1, 1),
                    np.random.uniform(-1, 1)) for _ in range(num_drops)]
 
-
-# ---------------------------------
 # Draw a house
-# ---------------------------------
 def draw_house():
     # Roof
     glColor3f(0.6, 0.25, 0.1)
@@ -58,10 +53,7 @@ def draw_house():
     glVertex2f(0.05, -0.45); glVertex2f(0.12, -0.45)
     glEnd()
 
-
-# ---------------------------------
 # Draw RED rain
-# ---------------------------------
 def draw_rain():
     global rain_drops, wind, rain_speed
 
@@ -85,10 +77,7 @@ def draw_rain():
 
     glEnd()
 
-
-# ---------------------------------
 # Keyboard controls
-# ---------------------------------
 def key_callback(window, key, scancode, action, mods):
     global wind, wind_speed, day_night, rain_speed
 
@@ -120,10 +109,7 @@ def key_callback(window, key, scancode, action, mods):
         elif key == glfw.KEY_MINUS or key == glfw.KEY_KP_SUBTRACT:
             rain_speed = max(rain_speed - 0.005, 0.002)
 
-
-# ---------------------------------
 # Start window + animation
-# ---------------------------------
 def start(width=720, height=600, title="Red Rain Animation"):
     if not glfw.init():
         print("GLFW initialization failed.")
@@ -163,4 +149,5 @@ def start(width=720, height=600, title="Red Rain Animation"):
 
     glfw.terminate()
 start()
+
 
